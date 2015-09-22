@@ -120,4 +120,9 @@ app.controller('gameController', function ($scope) {
       "The 7 of Spades resolves successfully.",
       "Player 0 has played the 6 of Spades for points after playing a seven."
     ];
+    this.count = 0;
+    this.draw = function () {
+    	$scope.game.log.push("Someone Drew the " + $scope.game.count + "th Card");
+    	$scope.game.count++;
+    };
 });
