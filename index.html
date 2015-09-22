@@ -8,13 +8,14 @@
 			<div id='enemyHand' class='hand'>
 				Enemy Hand
 				<div ng-repeat="card in game.players[0].hand" class="handCard col-sm-1 col-md-1 col-lg-1">
-					<img ng-src="{{card.img}}" class="handCard"></img>
+					<img src="word-ace-card-back.jpg" class="handCard"></img>
 				</div>
 			</div>
 			<div id='enemyFieldWrapper' class="container-fluid">
 				<div id='enemyPoints' class="col-xs-6 col-md-6 col-lg-6 field points">
 					Enemy Points
 					<div ng-repeat="card in game.players[0].points" class="fieldCard">
+						<div ng-repeat="jack in card.attachments">{{jack.alt}}</div>
 						<img ng-src="{{card.img}}" class="fieldCard"></img>
 					</div>					
 				</div>
@@ -35,6 +36,7 @@
 				<div id='yourPoints' class="col-xs-6 col-md-6 col-lg-6 field points">
 					Your Points
 					<div ng-repeat="card in game.players[1].points" class="fieldCard">
+						<div ng-repeat="jack in card.attachments">{{jack.alt}}</div>					
 						<img ng-src="{{card.img}}" class="fieldCard"></img>
 					</div>					
 				</div>

@@ -8,7 +8,6 @@ var Player = function () {
 	this.hand = [];
 	this.points = [];
 	this.runes = [];
-	this.attached = [];
 
 };
 
@@ -18,6 +17,8 @@ var Card = function (suit, rank) {
 	var alt = '';
 	var runeImg = '';
 	var isEight = false;
+	this.attachments = [];
+	
 	switch (rank) {
 		case 8:
 			isEght = true;
@@ -81,10 +82,23 @@ for (var i=0; i<10; i++) {
 	var card = new Card(0, i+1);
 	players[(i+1) % 2].hand.push(card);
 }
+var jackedPoint = new Card(3, 10);
+var jack = new Card(3, 11);
+var otherPoints = new Card(2, 10);
+var secondJack = new Card(2, 11);
+var king = new Card(0, 13);
+var queen = new Card(0, 12);
+
+jackedPoint.attachments.push(jack);
+jackedPoint.attachments.push(secondJack);
+players[0].points.push(jackedPoint);
+players[1].points.push(otherPoints);
+players[0].runes.push(queen);
+players[1].runes.push(king);
 console.log(players);
+
 app.controller('gameController', function ($scope) {
 	this.players = players;
-	console.log(this.players);
 	this.str = '';
 	this.log = [
       "Player 1 has played the 9 of Clubs for points",

@@ -4,6 +4,7 @@
 	display: inline-block;
 	height: 100%;
 }
+
 #enemyHand {
 	background-color: blue;
 	height: 15%;
@@ -11,22 +12,28 @@
 #enemyPoints{
 	background-color: green;
 	min-height: 24%;
+	text-align: center;
 }
 #enemyRunes {
 	background-color: red;
-	min-height: 24%
+	min-height: 24%;
+	max-height: 24%;
+	text-align: center;
 }
 #yourHand {
 	background-color: blue;
 	height: 15%;
+	text-align: center;
 }
 #yourPoints{
 	background-color: green;
 	min-height: 24%;
+	text-align: center;
 }
 #yourRunes {
 	background-color: red;
 	min-height: 24%;
+	text-align: center;
 }
 #ruleBox {
 	overflow: auto;
@@ -40,4 +47,11 @@
 #log {
 	overflow: auto;
 	height: 50%;
+}
+
+.fieldCard {
+	text-align: left;
+}
+.handCard {
+	text-align: center;
 }
