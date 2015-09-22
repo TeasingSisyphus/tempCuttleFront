@@ -55,3 +55,17 @@
 .handCard {
 	text-align: center;
 }
+
+.stackedJack {
+	height: 8%;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 45pt;
+}
+
+h1 {
+	font-weight: 500;
+	font-size: 75;
+}

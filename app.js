@@ -26,7 +26,21 @@ var Card = function (suit, rank) {
 			break;
 		case 11:
 			alt = 'The Jack ';
-			runeImg = 'card_' + suit + '_' + rank + '.png';
+			runeImg = 'jackClip_';
+			switch (suit) {
+				case 0:
+					runeImg += 'Clubs.jpg';
+					break;
+				case 1:
+					runeImg += 'Diamonds.jpg';
+					break;
+				case 2:
+					runeImg += 'Hearts.jpg';
+					break;
+				case 3:
+					runeImg += 'Spades.jpg';
+					break;
+			}
 			break;
 		case 12:
 			alt = 'The Queen ';
@@ -85,7 +99,7 @@ for (var i=0; i<10; i++) {
 var jackedPoint = new Card(3, 10);
 var jack = new Card(3, 11);
 var otherPoints = new Card(2, 10);
-var secondJack = new Card(2, 11);
+var secondJack = new Card(0, 11);
 var king = new Card(0, 13);
 var queen = new Card(0, 12);
 
