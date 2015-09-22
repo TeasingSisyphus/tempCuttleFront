@@ -1,0 +1,116 @@
+<script src='angular.js'></script>
+<script src='app.js'></script>
+<link rel='stylesheet' href='bootstrap.css'>
+<link rel='stylesheet' href='styles.css'>
+<body ng-app='homepage'>
+	<div ng-controller='gameController as game'>
+		<div class="col-xs-8 col-md-8, col-lg-8">				
+			<div id='enemyHand' class='hand'>
+				Enemy Hand
+				<div ng-repeat="card in game.players[0].hand" class="handCard col-sm-1 col-md-1 col-lg-1">
+					<img ng-src="{{card.img}}" class="handCard"></img>
+				</div>
+			</div>
+			<div id='enemyFieldWrapper' class="container-fluid">
+				<div id='enemyPoints' class="col-xs-6 col-md-6 col-lg-6 field points">
+					Enemy Points
+					<div ng-repeat="card in game.players[0].points" class="fieldCard">
+						<img ng-src="{{card.img}}" class="fieldCard"></img>
+					</div>					
+				</div>
+				<div id='enemyRunes' class="col-xs-6 col-md-6 col-lg-6 field runes">
+					Enemy Runes
+					<div ng-repeat="card in game.players[0].runes" class="fieldCard">
+						<img ng-src="{{card.img}}" class="fieldCard"></img>
+					</div>					
+				</div>					
+			</div>
+			<div id='midWrapper' class='container-fluid'>
+				<div class='col-sm-4 col-md-4 col-lg-4'>bootstrapText</div>
+				<div class='col-sm-3 col-md-5 col-lg-3'><img src='word-ace-card-back.jpg'></img></div>
+				<div class='col-sm-5 col-md-5 col-lg-5'><img src='emptyScrap.png'></img></div>
+			</div>
+
+			<div id='yourFieldWrapper' class="container-fluid">
+				<div id='yourPoints' class="col-xs-6 col-md-6 col-lg-6 field points">
+					Your Points
+					<div ng-repeat="card in game.players[1].points" class="fieldCard">
+						<img ng-src="{{card.img}}" class="fieldCard"></img>
+					</div>					
+				</div>
+				<div id='yourRunes' class="col-xs-6 col-md-6 col-lg-6 field runes">
+					Your Runes
+					<div ng-repeat="card in game.players[1].runes" class="fieldCard">
+						<img ng-src="{{card.img}}" class="fieldCard"></img>
+					</div>					
+				</div>					
+			</div>
+			<div id='yourHand' class='hand'>
+				Your Hand
+				<div ng-repeat="card in game.players[1].hand" class="handCard col-sm-1 col-md-1 col-lg-1">
+					<img ng-src="{{card.img}}" class="handCard"></img>
+				</div>
+			</div>			
+		</div>
+		<div class="col-xs-4, col-md-4, col-lg-4 rightWrap">
+			Game Rules
+			<div id='ruleBox'>
+			
+<h2>Legal Moves</h2>
+<p>Firstly: Any numbered card (A-10) may be played as a **point card**. In this case, the player puts the card face-up on the table in front of him, and it is worth as many points as the are spots on its face (1 for an ace, etc). </p>
+<br></br>
+<p>Secondly: Any numbered card (A-10) may be played, instead, as a **scuttle**. In this case, it is played **on top** of a point card which it exceeds in value: Both cards are then moved directly to the scrap pile (**face up**, as is everything there).
+	You may scuttle any card of a lower rank, or equal rank and a lower suit than the card played from your hand to perform the scuttle. This means that the Nine of Diamonds can scuttle the Nine of Clubs, or any point card of rank 8, or lower. The Ten
+	of Spades is the only point card that cannot be scuttled, and the only card that can scuttle any card played for points.
+</p>
+
+
+<h2>Card Values</h2>
+<p>
+1. Suit order: (spade, hearts, diamonds, clubs)
+2. Rank order: A-2-3-4-5-6-7-8-9-10-J-Q-K
+(A helpful way to remember suit order is that they are reverse-alphabetical: **S-H-D-C**)
+
+</p>
+
+<br></br>
+<h2>Number Cards</h2>
+
+<p>The numbered cards may all be played as a one-off, **except for the eights and tens.** In this case, they are placed directly into the scrap pile, with the following effects:</p>
+<br></br>
+<p>Ace: Put all point cards on the table into the scrap pile</p>
+<p>Two: Place any non-point card currently on the table into the scrap pile (this means a King, Queen, Jack, or 'glasses' eight. OR 
+ Place any one-off just played directly into the scrap pile. This is the only effect that may be played out of turn and must be played IMMEDIATELY as a response to the one off effect being countered.
+</p>
+<p>Three: Rummage through the scrap pile; take one card of your choice through your hand and reveal it to your opponent(s)</p>
+<p>Four: Your opponent must choose 2 cards from her hand to discard directly to the scrap pile</p>
+<p>Five: You may draw two cards</p>
+<p>Six: Move all non-point cards currently on the table (Kings, Queens, Jacks, and 'glasses eights') into the scrap pile.</p>
+<p>Seven: Reveal the top two cards from the deck to all players. Choose one of them to play. Put the other card on top of the deck, then play the chosen card in any legal manner (points, scuttling, one-off, etc)</p>
+<p>Nine: Return any card on the table to its controller's (the player on whose side of the table the card resides) hand. That card may NOT be played as that player's next turn.</p>
+<p>Ten: Has no effect. It's just 10 points, and the baddest scuttler around</p>
+
+<h2>Eight</h2>
+
+<p>Like all number cards, eights may be played as points, or used to scuttle. Additionally, they may be played as a non-point permanent (a card that stays on the table, granting a passive effect), like a face card. Eights played in this fashion are called 'glasses' eights and are displayed sideways for clarity. While you control a 'glasses' eight, your opponent must play open handed (reveal their hand to you)</p>
+<br></br>
+<h2>Royalty</h2>
+<p>Face cards can only be played on your turn, and count as no points. Each royal grants a passive bonus while you control it (have it on your side of the table)</p>
+<p>Jack: Placed on top of a point card (A-10) already on the table. The point card (and the attached jack) are moved across the table and are now controlled by the player that played the jack. The opponent may still play a jack on top of the same card to steal it back (all attached jacks move with the point card), and should any number of jacks be destroyed, the points revert to the control of whoever had them before the jacks just destroyed were first played.</p>
+<p>Queen: Played on the table, like a point card. With a Queen in play none of your other cards may be the target of cards that target a single card to apply a unique effect to it. Specifically this prevents your opponents from using any of the one off effects of Two's or Nine's on any of your cards, besides the Queen, herself, and it prevents the use of new jacks on your points, altogether. Notably, Queen's do not protect against scuttling, nor do they remove any jacks already used 
+to steal point cards.</p>
+<p>King: Played like a Queen. A player with a King in play needs fewer than normal points to win. With one King, the player needs 14 points, with two Kings, 10 points, with three Kings, 7 points, and with all 4 kings, only 5 points. 
+(Mathematically, a player needs 21/(1.5^k) points to win, where k is the number of Kings controlled by that player). </p>
+			
+			</div>
+			<br></br>
+			<br></br>
+			<div id='logBox'>
+				Game Log
+				<ul id='log'>
+					<li ng-repeat='log in game.log'>{{log}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>

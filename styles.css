@@ -1,0 +1,43 @@
+.rightWrap {
+}
+.handCard {
+	display: inline-block;
+	height: 100%;
+}
+#enemyHand {
+	background-color: blue;
+	height: 15%;
+}
+#enemyPoints{
+	background-color: green;
+	min-height: 24%;
+}
+#enemyRunes {
+	background-color: red;
+	min-height: 24%
+}
+#yourHand {
+	background-color: blue;
+	height: 15%;
+}
+#yourPoints{
+	background-color: green;
+	min-height: 24%;
+}
+#yourRunes {
+	background-color: red;
+	min-height: 24%;
+}
+#ruleBox {
+	overflow: auto;
+	height: 40%;
+}
+
+#logBox {
+	height: 60%;
+}
+
+#log {
+	overflow: auto;
+	height: 50%;
+}
