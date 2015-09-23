@@ -1,1 +1,1 @@
-# View Page by opening index.html in your browswer
+# View Page by opening index.html in your browser
